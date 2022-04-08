@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	entry: ".src/index.js",
+	entry: "./src/index.js",
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
@@ -23,7 +23,7 @@ module.exports = {
 			{
 				test: /\.html$/,
 				use: [
-					{ loader: 'babel-loader'}
+					{ loader: 'html-loader'}
 				]
 			}
 		]

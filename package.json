@@ -1,0 +1,48 @@
+{
+  "name": "ministerio",
+  "version": "1.0.0",
+  "description": "Prueba de trabajo",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "dotenv-webpack": "^7.1.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "terser-webpack-plugin": "^5.3.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.72.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --config wewbpack.config.dev.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wharem85-25/PruebaMinisterio.git"
+  },
+  "keywords": [
+    "Javascript",
+    "React",
+    "Webpack",
+    "nodejs"
+  ],
+  "author": "Wilmer Monterrozo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wharem85-25/PruebaMinisterio/issues"
+  },
+  "homepage": "https://github.com/Wharem85-25/PruebaMinisterio#readme"
+}

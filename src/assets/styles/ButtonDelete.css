@@ -1,0 +1,13 @@
+.container-delete {
+	padding-right: 50px;
+	padding-top: 50px;
+	width: 200px;
+}
+
+.container-button-delete {
+	text-align: center;
+	width: 120px;
+	border: 1px solid;
+	border-radius: 30px;
+	background-color:rgb(177, 2, 177);
+}

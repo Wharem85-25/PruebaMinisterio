@@ -1,0 +1,10 @@
+.content {
+	padding-top: 30px;
+}
+
+.content-button {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+

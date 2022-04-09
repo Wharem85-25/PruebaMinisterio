@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: "./src/index.js",
@@ -8,7 +10,16 @@ module.exports = {
 		filename: 'bundle.js',
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.js', '.jsx'],
+		alias: {
+			'@mui/styled-engine' : '@mui/styled-engine-sc',
+			'@mui/base': '@mui/base/legacy',
+      '@mui/lab': '@mui/lab/legacy',
+      '@mui/material': '@mui/material/legacy',
+      '@mui/styled-engine': '@mui/styled-engine/legacy',
+      '@mui/system': '@mui/system/legacy',
+			'@components': path.resolve(__dirname, 'src/components/'),
+		}
 	},
 	mode: "development",
 	module: {
@@ -25,7 +36,18 @@ module.exports = {
 				use: [
 					{ loader: 'html-loader'}
 				]
-			}
+			},
+			{
+				test: /\.css$/,
+				use: [
+					"style-loader",
+					"css-loader",
+				],
+			},
+			{
+				test: /\.(png|jpg|svg|gif)$/,
+				type: 'asset'
+			},
 		]
 	},
 	plugins: [
@@ -33,6 +55,10 @@ module.exports = {
 			template: './src/public/index.html',
 			filename: './index.html'
 		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css'
+		}),
+		new Dotenv(),
 	],
 	devServer: {
 		static: {

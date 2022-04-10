@@ -23,7 +23,7 @@ const button = {
 	fontSize: '16px',
 }
 
-const ButtonPost = ({handleOnEnter}) => {
+const ButtonPost = () => {
 	const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -40,7 +40,7 @@ const ButtonPost = ({handleOnEnter}) => {
 					aria-describedby="modal-modal-description"
 				>
 					<Box sx={style}>
-						<FormPost handleOnEnter={handleOnEnter} />
+						<FormPost />
 					</Box>
 				</Modal>
 			</div>

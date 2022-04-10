@@ -31,7 +31,7 @@ const UpdateButton = () => {
 	return (
 		<div className="container-update">
 			<div className="container-button-update">
-				<Button sx={button} onClick={handleOpen}>Update</Button>
+				<Button sx={button} onClick={handleOpen}>Modificar</Button>
 				<Modal
 					open={open}
 					onClose={handleClose}

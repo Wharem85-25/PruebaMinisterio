@@ -31,7 +31,7 @@ const DeleteButton = () => {
 	return (
 		<div className="container-delete">
 			<div className="container-button-delete">
-				<Button sx={button} onClick={handleOpen}>Delete</Button>
+				<Button sx={button} onClick={handleOpen}>Borrar</Button>
 				<Modal
 					open={open}
 					onClose={handleClose}

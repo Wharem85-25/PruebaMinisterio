@@ -1,52 +1,47 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 import '../assets/styles/TableGet.css';
 
-const API = process.env.APIGET
-
-const TableGet = () => {
-  const [datos, setDatos] = useState([])
-
-  useEffect(() => {
-    fetch(API)
-      .then((response) => {
-        return response.json()
-      })
-      .then((datos) => {
-        datos.data.forEach(usuario => {
-          setDatos(usuario)
-        });
-          console.log(datos.data);
-      })
-  }, [])
-
+const TableGet = ({datos}) => {
 	return (
-		<div>
-      <table borderColor="white" className="table">
-        <thead className="table-head">
-          <tr className="titles">
-            <th className="title">Nombre</th>
-            <th className="title" >Apellido</th>
-            <th className="title" >Dpi</th>
-            <th className="title" >Nit</th>
-            <th className="title" >Municipio</th>
-          </tr>
-        </thead>
-        <tbody className="table-body">
-          {Object.keys(datos).map(dat => {
-            console.log(dat)
-            return (
-              <tr key={datos.id} className="content">
-                <td className="datos" >{datos.nombre}</td>
-                <td className="datos" >{datos.apellido}</td>
-                <td className="datos" >{datos.dpi}</td>
-                <td className="datos" >{datos.nit}</td>
-                <td className="datos">{datos.municipio}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+         <TableHead>
+           <TableRow>
+             <TableCell>Nombre</TableCell>
+            <TableCell align="right">Apellido</TableCell>
+             <TableCell align="right">DPI</TableCell>
+             <TableCell align="right">Nit</TableCell>
+             <TableCell align="right">Direccion</TableCell>
+            <TableCell align="right">Municipio</TableCell>
+           </TableRow>
+         </TableHead>
+         <TableBody>
+           {datos.map((dat) => (
+            <TableRow
+              key={dat.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {dat.nombre}
+              </TableCell>
+              <TableCell align="right">{dat.apellido}</TableCell>
+              <TableCell align="right">{dat.dpi}</TableCell>
+              <TableCell align="right">{dat.nit}</TableCell>
+              <TableCell align="right">{dat.direccion}</TableCell>
+              <TableCell align="right">{dat.municipio}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+       </Table>
+    </TableContainer>
 	);
 };
 

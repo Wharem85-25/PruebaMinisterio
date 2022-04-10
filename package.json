@@ -23,6 +23,7 @@
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@mui/x-data-grid": "^5.8.0",
     "axios": "^0.26.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.4",

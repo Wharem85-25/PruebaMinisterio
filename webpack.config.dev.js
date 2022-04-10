@@ -18,6 +18,7 @@ module.exports = {
       '@mui/material': '@mui/material/legacy',
       '@mui/styled-engine': '@mui/styled-engine/legacy',
       '@mui/system': '@mui/system/legacy',
+			'@mui/data-grid' : '@mui/x-data-grid',
 			'@components': path.resolve(__dirname, 'src/components/'),
 		}
 	},

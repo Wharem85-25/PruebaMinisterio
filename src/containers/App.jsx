@@ -7,17 +7,6 @@ import Title from '../components/Title';
 import '../assets/styles/App.css'
 
 const App = () => {
-	// const [rows, setRows] = useState([]);
-
-	// function handleOnEnter(text) {
-	// 	let newArray = [...rows]
-	// 	newArray.push(createData(text))
-	// 	setRows(newArray);
-	// }
-
-	// function createData(dpi, nit, nombre, direccion, municipio) {
-	// 	return {dpi, nit, nombre, direccion, municipio};
-	// }
 
 	return (
 		<div className="content">

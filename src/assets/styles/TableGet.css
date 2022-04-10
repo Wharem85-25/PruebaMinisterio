@@ -1,0 +1,42 @@
+.table {
+	width: 100%;
+	border-radius: 30px;
+	background-color: rgb(102, 22, 62);
+	border-collapse: separate;
+  border-spacing: 10px 15px;
+}
+
+.table-head {
+	border-color: black;
+	border-bottom: 3px solid white;
+}
+
+.titles {
+	color: white;
+	text-align: center;
+	spacing: ;
+}
+
+.title {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: arial;
+}
+
+.table-body {
+	border-radius: 3px;
+	border-color: black;
+}
+
+.content {
+	border-radius: 3px;
+}
+
+.datos {
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: arial;
+}

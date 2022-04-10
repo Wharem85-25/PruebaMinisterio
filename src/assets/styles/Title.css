@@ -1,11 +1,11 @@
 .title {
 	align-items: center;
-	padding-bottom: 10px;
 }
 
 .textTitle {
 	text-align: center;
-	font-size: 30px;
+	font-size: 34px;
 	font-weight: bold;
 	font-family: Arial;
+	color: black;
 }

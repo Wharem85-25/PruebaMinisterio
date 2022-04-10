@@ -1,63 +1,52 @@
-import React, {useState} from 'react';
-import getData from '../utils/getData';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import React, {useState, useEffect} from 'react';
+import '../assets/styles/TableGet.css';
 
-const API = 'https://servicios.mem.gob.gt/api/api_prueba/prueba/read';
-
-function createData(nombre, nit, dpi, direccion, municipio) {
-  return { nombre, nit, dpi, direccion, municipio };
-}
-
-const rows = [
-  createData('Ice cream', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
+const API = process.env.APIGET
 
 const TableGet = () => {
-  // const datos = getData(API);
+  const [datos, setDatos] = useState([])
 
-  const [dpi, setDpi] = useState([]);
+  useEffect(() => {
+    fetch(API)
+      .then((response) => {
+        return response.json()
+      })
+      .then((datos) => {
+        datos.data.forEach(usuario => {
+          setDatos(usuario)
+        });
+          console.log(datos.data);
+      })
+  }, [])
 
 	return (
-		<TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nombre</TableCell>
-            <TableCell align="right">Nit</TableCell>
-            <TableCell align="right">Dpi</TableCell>
-            <TableCell align="right">Direccion</TableCell>
-            <TableCell align="right">Municipio</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.nombre}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.nombre}
-              </TableCell>
-              <TableCell align="right">{row.nit}</TableCell>
-              <TableCell align="right">{row.dpi}</TableCell>
-              <TableCell align="right">{row.direccion}</TableCell>
-              <TableCell align="right">{row.municipio}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+		<div>
+      <table borderColor="white" className="table">
+        <thead className="table-head">
+          <tr className="titles">
+            <th className="title">Nombre</th>
+            <th className="title" >Apellido</th>
+            <th className="title" >Dpi</th>
+            <th className="title" >Nit</th>
+            <th className="title" >Municipio</th>
+          </tr>
+        </thead>
+        <tbody className="table-body">
+          {Object.keys(datos).map(dat => {
+            console.log(dat)
+            return (
+              <tr key={datos.id} className="content">
+                <td className="datos" >{datos.nombre}</td>
+                <td className="datos" >{datos.apellido}</td>
+                <td className="datos" >{datos.dpi}</td>
+                <td className="datos" >{datos.nit}</td>
+                <td className="datos">{datos.municipio}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
 	);
 };
 

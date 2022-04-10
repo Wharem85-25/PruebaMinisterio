@@ -23,7 +23,7 @@ const button = {
 	fontSize: '16px',
 }
 
-const ButtonPost = () => {
+const ButtonPost = ({handleOnEnter}) => {
 	const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,7 +32,7 @@ const ButtonPost = () => {
 	return (
 		<div className="container">
 			<div className="container-button">
-				<Button sx={button} className="button" onClick={handleOpen}>Create</Button>
+				<Button sx={button} className="button" onClick={handleOpen}>Crear</Button>
 				<Modal
 					open={open}
 					onClose={handleClose}
@@ -40,7 +40,7 @@ const ButtonPost = () => {
 					aria-describedby="modal-modal-description"
 				>
 					<Box sx={style}>
-						<FormPost />
+						<FormPost handleOnEnter={handleOnEnter} />
 					</Box>
 				</Modal>
 			</div>

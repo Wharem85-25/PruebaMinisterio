@@ -1,10 +1,10 @@
 import React from 'react';
 import ButtonPost from '../components/ButtonPost';
 
-const Post = () => {
+const Post = ({handleOnEnter}) => {
 	return (
 		<div>
-			<ButtonPost />
+			<ButtonPost handleOnEnter={handleOnEnter}  />
 		</div>
 	);
 };

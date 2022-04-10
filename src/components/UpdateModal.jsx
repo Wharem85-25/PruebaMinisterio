@@ -1,15 +1,62 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
 const button = {
-  border: '1px solid black',
-  color: 'black'
+	marginTop: "20px",
+  backgroundColor: "black",
+	color: 'gray',
+	fontWeight: 'bold',
+	fontSize: '16px',
+  alignItems: "center"
 }
-const API = process.env.API;
+
+const APIUPDATE = process.env.APIUPDATE;
 
 const UpdateModal = () => {
+  const [id, setId] = useState('');
+  const [dpiDato, setDpi] = useState('');
+  const [nitDato, setNit] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [municipio, setMunicipio] = useState(null);
+
+  var data = {
+    id: id,
+    dpi: dpiDato,
+    nit: nitDato,
+    nombre: nombre,
+    apellido: apellido,
+    direccion: direccion,
+    municipio_id: municipio
+  }
+
+  var config = {
+    method: 'put',
+    url: APIUPDATE,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  const fetchData = async () => {
+    await axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+  .catch(function (error) {
+    console.log(error);
+  });
+  }
+
+  const handleClick = () => {
+    fetchData()
+  }
+
 	return (
 		<Box
       component="form"
@@ -23,15 +70,16 @@ const UpdateModal = () => {
         id="outlined-number"
         label="Id"
         type="number"
+        onChange={event => setId(event.target.value)}
         InputLabelProps={{
           shrink: true,
         }}
       />
-			<Button sx={button}>Traer</Button>
       <TextField
         id="outlined-number"
         label="Dpi"
         type="number"
+        onChange={event => setDpi(event.target.value)}
         InputLabelProps={{
           shrink: true,
         }}
@@ -40,13 +88,14 @@ const UpdateModal = () => {
         id="outlined-number"
         label="Nit"
         type="number"
+        onChange={event => setNit(event.target.value)}
         InputLabelProps={{
           shrink: true,
         }}
       />
-      <TextField id="outlined-search" label="Nombre" type="search" />
-			<TextField id="outlined-search" label="Apellido" type="search" />
-			<TextField id="outlined-search" label="Direccion" type="search" />
+      <TextField id="outlined-search" label="Nombre" type="search" onChange={event => setNombre(event.target.value)} />
+			<TextField id="outlined-search" label="Apellido" type="search" onChange={event => setApellido(event.target.value)} />
+			<TextField id="outlined-search" label="Direccion" type="search" onChange={event => setDireccion(event.target.value)} />
 			<TextField
         id="outlined-number"
         label="Municipio"
@@ -55,6 +104,7 @@ const UpdateModal = () => {
           shrink: true,
         }}
       />
+      <Button sx={button} onClick={handleClick} >Modificar</Button>
 		</Box>
 	);
 };

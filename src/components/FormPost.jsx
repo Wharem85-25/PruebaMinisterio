@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import getMun from '../hooks/getMun';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -20,13 +21,14 @@ const button = {
   alignItems: "center"
 }
 
-const FormPost = () => {
+const FormPost = ({dep}) => {
   const [dpiDato, setDpi] = useState('');
   const [nitDato, setNit] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [direccion, setDireccion] = useState('');
   const [municipio, setMunicipio] = useState(null);
+  const [departamenot, setDepartamento] = useState(null);
 
   var obj = {
     dpi: dpiDato,
@@ -55,6 +57,8 @@ const FormPost = () => {
     fetchData(obj)
   }
 
+  const muni = getMun();
+
 	return (
 		<Box
       component="form"
@@ -80,14 +84,18 @@ const FormPost = () => {
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Departamentos</InputLabel>
         <Select labelId="demo-simple-select-label" id="demo-simple-select"  label="Departamentos">
-          <MenuItem>Ten</MenuItem>
+          {dep.map((item) => (
+            <div key={item.id}>
+              <MenuItem value={item.id} >{item.nombre}</MenuItem>
+            </div>
+          ))}
         </Select>
       </FormControl>
       <div className="space"></div>
       <FormControl fullWidth className="form-control">
         <InputLabel id="demo-simple-select-label">Municipios</InputLabel>
         <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Municipios" >
-          <MenuItem value={1} >Guatemala</MenuItem>
+          <MenuItem value={10}>Guatemala</MenuItem>
          </Select>
       </FormControl>
       <Button onClick={handleClick} className="button-crear" sx={button}>Nuevo usuario</Button>

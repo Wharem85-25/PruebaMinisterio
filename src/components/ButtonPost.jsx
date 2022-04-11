@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import FormPost from '../components/FormPost'
+import axios from 'axios';
 import '../assets/styles/ButtonPost.css'
 
 const style = {
@@ -23,11 +24,28 @@ const button = {
 	fontSize: '16px',
 }
 
+const API = process.env.APIDEP;
+
 const ButtonPost = () => {
 	const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+	const [dep, setDep] = useState([]);
 
+	useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios({
+          url: API,
+        });
+        setDep(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [setDep]);
 
 	return (
 		<div className="container">
@@ -40,7 +58,7 @@ const ButtonPost = () => {
 					aria-describedby="modal-modal-description"
 				>
 					<Box sx={style}>
-						<FormPost />
+						<FormPost dep={dep} />
 					</Box>
 				</Modal>
 			</div>

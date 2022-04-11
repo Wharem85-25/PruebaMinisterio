@@ -8,7 +8,7 @@ import Update from './Update';
 import Title from '../components/Title';
 import '../assets/styles/App.css'
 
-const API = process.env.APIGET
+const API = process.env.APIGET;
 
 const App = () => {
   const initialState = getData();
